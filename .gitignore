@@ -11,3 +11,6 @@ __pycache__/
 /node_modules/
 /frontend/node_modules/
 /frontend/dist/
+
+magic_patterns_UI/
+magic_patterns_UI.zip
