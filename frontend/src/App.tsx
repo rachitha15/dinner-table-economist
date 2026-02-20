@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { LandingScreen } from './components/LandingScreen';
 import { LoadingScreen } from './components/LoadingScreen';
 import { VerdictScreen } from './components/VerdictScreen';
@@ -117,6 +118,7 @@ export function App() {
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/30">
       {renderScreen()}
+      <Analytics />
     </div>);
 
 }
