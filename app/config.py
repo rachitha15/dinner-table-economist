@@ -14,6 +14,7 @@ class Settings:
         default_factory=lambda: os.getenv("ALLOW_ORIGINS", "*").split(",")
     )
     openai_ssl_verify: bool = os.getenv("OPENAI_SSL_VERIFY", "true").lower() != "false"
+    app_api_key: str | None = os.getenv("APP_API_KEY")
 
 
 settings = Settings()

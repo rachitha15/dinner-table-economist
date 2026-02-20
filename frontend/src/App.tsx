@@ -8,6 +8,7 @@ import { ErrorScreen } from './components/ErrorScreen';
 import type { VerdictData } from './utils/mockData';
 type AppState = 'landing' | 'loading' | 'verdict' | 'out-of-scope' | 'error';
 const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+const API_KEY = import.meta.env.VITE_API_KEY;
 export function App() {
   const [state, setState] = useState<AppState>('landing');
   const [currentClaim, setCurrentClaim] = useState('');
@@ -33,7 +34,10 @@ export function App() {
       try {
         const response = await fetch(`${API_URL}/api/check-claim`, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            ...(API_KEY ? { 'x-api-key': API_KEY } : {})
+          },
           body: JSON.stringify({ claim: currentClaim }),
           signal: controller.signal
         });

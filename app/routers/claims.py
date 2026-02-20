@@ -217,6 +217,10 @@ async def check_claim(request: Request, payload: ClaimRequest):
     ip = request.client.host if request.client else "unknown"
     if _rate_limit(ip):
         raise HTTPException(status_code=429, detail="Rate limit exceeded")
+    if settings.app_api_key:
+        api_key = request.headers.get("x-api-key")
+        if not api_key or api_key != settings.app_api_key:
+            raise HTTPException(status_code=401, detail="Unauthorized")
 
     try:
         classification = await classify_claim(payload.claim)
