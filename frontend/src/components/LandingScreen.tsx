@@ -19,7 +19,7 @@ export function LandingScreen({ onCheckClaim }: LandingScreenProps) {
 
       <main className="w-full flex flex-col items-center gap-8 flex-1">
         <p className="text-center text-muted-foreground text-sm font-sans max-w-xl">
-          Built with multi-agent reasoning and MCP tools to query MoSPI data.
+          Built with multi-agent reasoning and MCP tools to query the MoSPI MCP server (India’s Ministry of Statistics and Programme Implementation).
         </p>
         <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4">
           <div className="relative group">
